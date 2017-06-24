@@ -1,0 +1,41 @@
+{
+ "items": [
+   {
+     "id": 1,
+     "img": "http://img.teleflora.com/images/o_0/l_flowers:t17m100c,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_auto,q_auto:eco,e_sharpen:200/flowers/t17m100c/Teleflora'sSparkleAndShineBouquet",
+     "name": "Apple",
+     "price": "1.99",
+     "stars": "&#9733;&#9733;&#9733;&#9733;&#9733;",
+     "attribution": "visualhunt",
+     "url": "http://img.teleflora.com/images/o_0/l_flowers:t17m100c,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_auto,q_auto:eco,e_sharpen:200/flowers/t17m100c/Teleflora'sSparkleAndShineBouquet",
+       "src":"http://img.teleflora.com/images/o_0/l_flowers:t17m100c,pg_6/w_368,h_460,cs_no_cmyk,c_pad/f_auto,q_auto:eco,e_sharpen:200/flowers/t17m100c/Teleflora'sSparkleAndShineBouquet"
+   },
+   {
+     "id": 2,
+     "img": "../img/HowSweetItIs.png",
+     "name": "Orange",
+     "attribution": "visualhunt",
+     "price": "0.99",
+     "stars": "&#9733;&#9733;&#9733;&#9733;&#9734;",
+     "url": "#"
+   },
+   {
+     "id": 3,
+     "img": "../img/HowSweetItIs.png",
+     "name": "Pear",
+     "attribution": "visualhunt",
+     "price": "1.50",
+     "stars": "&#9733;&#9733;&#9733;&#9734;&#9734;",
+     "url": "#"
+   },
+   {
+     "id": 4,
+     "img": "../img/HowSweetItIs.png",
+     "name": "Banana",
+     "attribution": "pixabay",
+     "price": "1.50",
+     "stars": "&#9733;&#9733;&#9733;&#9733;&#9733;",
+     "url": "#"
+   }
+ ]
+}

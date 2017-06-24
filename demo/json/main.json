@@ -1,0 +1,24 @@
+{
+  "requests": {
+    "pageview": "https://example.com/analytics?url=${canonicalUrl}&title=${title}&acct=${account}",
+    "event": "https://example.com/analytics?eid=${eventId}&elab=${eventLabel}&acct=${account}"
+  },
+  "vars": {
+    "account": "ABC123"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    },
+    "trackAnchorClicks": {
+      "on": "click",
+      "selector": "a",
+      "request": "event",
+      "vars": {
+        "eventId": "42",
+        "eventLabel": "clicked on a link"
+      }
+    }
+  }
+}

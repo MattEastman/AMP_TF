@@ -1,0 +1,457 @@
+<!--Matt Eastman
+Questions / todo
+
+- amp bind to change pictures from Standard to Deluxe to Premium
+- How to trigger AMp-animation correctly (bottom od page)?
+--------------------------------------------------------------------------------------------------------------------------------->
+
+<!-- Doctype declaration is required. -->
+<!doctype html>
+<!-- This tells everyone that this is an AMP file. `<html amp>` works too. -->
+<html ⚡>
+<head>
+<!-- The charset definition must be the first child of the `<head>` tag. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>teleflora AMp Demo</title>
+<!-- AMP HTML files require a canonical link pointing to the regular HTML. If no HTML version exists, it should point to itself.-->
+<!-- On Legacy / desktop site add <link rel="amphtml" href="http://example.ampproject.org/article.amp.html" />   -->
+    <link rel="canonical" href="http://teleflora.com">
+<!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+    <script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://ampbyexample.com/#samples_templates",
+        "name": "Samples &amp; Templates"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://ampbyexample.com/samples_templates/product_browse_page/",
+        "name": "Product Browse Page"
+      }
+    }]
+  }</script>
+ 
+<!-- CSS must be embedded inline. ------------------------------------->
+  <style amp-custom>
+/* Amp-font: this is how you add additional fonts */
+  @font-face {
+    font-family: 'Bembo W01';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/bembo.0tf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Avenir-Medium';
+    font-style: normal;
+    font-weight: 400;
+    src: url(fonts/Avenir-Medium.ttf) format('truetype');
+  }
+    /* Amp-font: timeout = amount of time to wait to see if not will load (3000 default and 0 means it will only be loaded only if already cached). onerror and onload are optional attributes to add classes once font is loaded on not loaded */
+    <amp-font layout="nodisplay"
+      font-family="Bembo W01"
+      timeout="3000"
+      on-error-remove-class="unavailable-font-loading"
+      on-error-add-class="unavailable-font-missing"
+      on-load-remove-class="unavailable-font-loading"
+      on-load-add-class="unavailable-font-loaded">
+    </amp-font>      
+    <amp-font layout="nodisplay"
+      font-family="Avenir LT W01 65 Medium"
+      timeout="3000"
+    </amp-font>
+      a{color:#fa3c7a;text-decoration: none;}
+      li{list-style-type: none;}
+      h1,h2,h3,h4,h5,h6{text-align: center; font-family: 'Bembo W01', Georgia, "Times New Roman", serif;}
+      h1{font-size: 24px; font-family: "Avenir-Medium", Helvetica, sans-serif;}
+      h2{font-size: 14px; font-family:"Avenir-Medium", Helvetica, sans-serif; font-weight: 400;}
+      #dod_greyback{background-color: rgba(240,240,240,1)}
+      #up15{position: relative;top: -15px}
+      .container-text,.container-RM{padding:2px 10px;}
+      .container-RM{}
+      .container-RM h3,.container-RM h4, .container-RM h5 {text-align: left;font-weight: 400;}
+      .container-RM h4{margin-bottom: -15px;}
+      .promo-container{height: 55px;background-color: #fa3c7a;margin-top: -15px}
+      .promo-container h3{font-size: 15px;color:#ffffff;font-weight: 600;}
+      #logo{display: inline-block; position: relative; top:-15px; right: -10px; margin: 0 auto;}
+      #logo2{position: relative;right: -60px; top:-38px;margin: 0 auto;}
+      #header-sidebar{border: 1px solid #e2e2e2;}
+      .ampstart-navbar-trigger{display: inline-block;}
+      .login-container{float: right; height: 22px;display: inline-block;margin-left: 25px; padding:20px 10px 20px 1px;position: relative;top: -2px}
+      .login-container .login, .login-container .cart{display: inline-block;margin:15px 0px 0px 10px;height: 55px;width: 55px; position: relative; top:-32px;position: relative;}
+      .login amp-img, .cart amp-img{display: inline-block; position: relative;right: -30%;bottom:-18%}
+      .cart amp-img{bottom:-21%}
+      .login-container h6{display: inline-block;position: relative;bottom:-53%;left: -22%; margin: auto;}
+      .cart h6{position: relative;left: -16%;}
+      .login-container a{color:black;}
+      .ampstart-nav {margin-top: -22px; background-color: #ffffff;}
+      .ampstart-nav ul {list-style-type: none;position: relative;max-width: 160px;margin:0px;}
+      .ampstart-nav li {position: relative; left: -40px;border-bottom: 1px solid #f1f1f1;min-width:210px;}
+      .ampstart-nav a {font-size: 12px;text-decoration: none;text-transform: uppercase;padding-left: 20px;font-weight: 500;}
+      .ampstart-nav h2{font-size: 12px;background-color:white;padding: 5px 0px;text-align: left;padding-left: 10px;border-bottom: 1px solid black;}
+      .ampstart-dropdown-item{padding:10px 5px;text-decoration: none;}
+      form.amp-form-submit-success [submit-success],
+      form.amp-form-submit-error [submit-error]{margin-top: 16px;}
+      form.amp-form-submit-success [submit-success] {color: green;}
+      form.amp-form-submit-error [submit-error] {color: red;}
+      form.amp-form-submit-success.hide-inputs > input {display: none;}
+      form .ampstart-input{}
+      form input{position: relative; width: 60%;height: 35px; display: block; margin: auto;margin-left: 15%;}
+      form #submit{position: relative;left: 60%; top:-35px; width: 55px;}
+      #x-icon{padding:10px 0px 10px 10px;}
+      #hero-images{background-color:#e2e2e2;height: 300px;margin-top: -20px;}
+      #hero-images h3{padding-top: 5px;text-align: center;}
+      #hero-images amp-img{ display: block; margin: 0 auto;}
+      .footer{background-color: #fafafa;padding: 10px 0px;}
+      .footer h5,.footer p,.footer li a{text-align: left;color:grey}
+      .footer li a{font-size: 14px; text-align: left;margin-left: -25px;}
+      .footer h5{margin-bottom: 2px;margin-left: 10px; color:black;}
+      .footer p{font-size: 14px; margin: 0;padding-left: 20px;}
+      .footer a{padding: 0px 3px;}
+      .footer-social{margin-top: 10px;}
+      .footer .icon-social amp-img{border:1px solid #fa3c7a;}
+      #img-rewards{display: block; padding: 10px 19px 0px 18px;}
+      .footer-grid-2{display: inline-block; width: 48%;vertical-align: top;}
+  </style>    
+  <!--The AMP boilerplate.-->
+  <style amp-boilerplate>
+      body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+<body>
+<!-- Promo banner section  -->
+<!------------------------------------------------------------------ Promo javascript here -->
+    <div class="promo-container">
+        <h3>Next Day and Same Day Delievery Available On All Boutuets!</h3>
+        <h3 id="up15">Shop Now  >></h3>
+    </div>
+    
+<!-- Amp Start Navbar -->
+    <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4" >
+        <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger">
+            <amp-img width="48"
+                   height="56"
+                   layout="fixed"
+                   src="img/menu.png"></amp-img>
+            <amp-img id="logo" width="120" height="30" layout="fixed" src="img/Teleflora.png" ></amp-img>
+        </div>
+        <div class="login-container">
+            <a href="https://www.teleflora.com/account/login.jsp">
+                <div class="login">
+                    <amp-img width="19"
+                             height="19"
+                             layout="fixed"
+                             src="img/login.png"></amp-img>
+                    <h6>Login</h6>
+               </div>
+            </a> 
+            <a href="https://www.teleflora.com/cart">
+                <div class="cart">
+                    <amp-img width="23"
+                             height="19"
+                             layout="fixed"
+                             src="img/cart.png"></amp-img>
+                    <h6>Cart</h6>
+                </div>
+            </a>
+        </div>
+  </header>
+
+<!-- Amp Start Sidebar --------------------------------------------------------------->
+<amp-sidebar id="header-sidebar" layout="nodisplay">
+  <div>
+    <div id="x-icon" role="button" on="tap:header-sidebar.toggle" tabindex="0">
+      <amp-img src="img/x-icon.png"
+               width="25"
+               height="25"
+               alt="x icon"></amp-img>
+    </div>
+      <amp-img id="logo2" width="120" height="30" layout="fixed" src="img/Teleflora.png" ></amp-img>
+  </div>
+  <nav class="ampstart-sidebar-nav ampstart-nav">
+    <ul class="nav1">
+        <li class="ampstart-dropdown-item"><a href="#">Deal of the Day</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">Mother's Day</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">Birthday</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">sympathy</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">occasions</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">shop by</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">collections</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">quick shop</a></li>
+    </ul>
+    <h2>Customer Service</h2>
+    <ul class="nav2">
+        <li class="ampstart-dropdown-item"><a href="#">E-mail US</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">(800) 493 5610</a></li>
+        <li class="ampstart-dropdown-item"><a href="#">International Delievery</a></li>
+    </ul>
+  </nav>
+</amp-sidebar>
+    
+<!--------------------------------------------- Search Bar Use Form -->
+<form method="GET"
+  class="p2"
+  action="/components/amp-form/submit-form"
+  target="_top">
+    <div class="ampstart-input">
+        <input type="search"
+               placeholder="Search..."
+               name="googlesearch">
+    </div>
+    <input id="submit" type="submit" value="OK" class="ampstart-btn caps">
+</form>    
+    
+    
+    
+    
+    
+    <!-----------------------------------  ?? AMp Animations -----
+<button on="tap:anim1.activate">Animate test button</button>
+<amp-animation layout="nodisplay" trigger="visibility">
+<script type="application/json">
+  {
+    "selector": "#animation1",
+    "duration": 2000,
+   "keyframes": {
+    "opacity": [1, 0],
+    "transform": ["scale(1)", "scale(2)"]
+  }
+</script>
+</amp-animation>
+    
+ <amp-animation id="anim1" layout="nodisplay">
+ { 
+  "annimations":[
+     {
+    "selector": ".footer-rewards",
+    "duration": 2000,
+     }
+   "keyframes": {
+    "opacity": [1, 0],
+    "transform": ["scale(1)", "scale(2)"]
+    }
+]}
+</amp-animation>
+--->
+<!-------------------------- ?? AMP Bind ------
+<section id="amp-bind-sample">
+    <amp-state id="bindEx">
+      <script type="application/json">
+      {
+       "deal": {
+        "imageUrl": "http://img.teleflora.com/image/upload/fl_lossy,f_auto,q_auto:eco/prod/banners/201702-dealoftheday-m.jpg",
+        "style": "greenBackground"
+        },
+      "flower": {
+        "imageUrl": "http://img.teleflora.com/images/o_0/l_flowers:t28-1a,pg_6/w_272,h_340,cs_no_cmyk,c_pad,g_south/f_png,q_auto:eco,e_sharpen:200/flowers/t28-1a/Teleflora'sBrilliantBirthdayBlooms",
+        "style": "redBackground"
+        }
+      }
+      </script>
+    </amp-state>  
+    <p [text]="'This is a ' + currentBind + '.'">This is a deal.</p>
+    <p [class]="bindEx[currentbind].style" class="greenBackground">Each object has a different background color.</p>
+    <amp-img src="http://img.teleflora.com/image/upload/fl_lossy,f_auto,q_auto:eco/prod/banners/201702-dealoftheday-m.jpg" layout="responsive" width="300" height="200" [src]="bindEx[currentBind].imageUrl">
+    </amp-img>
+    <button class="ampstart-btn caps m1" on="tap:AMP.setState({currentBind: 'flower'})">Set to flower object</button>
+</section>
+  ---> 
+    
+    
+    
+    
+    
+    
+<!------------- footer-->
+ <footer class='footer' >
+     <div>
+         <h5>Connect with Teleflora</h5>
+         <p>Get the latest news and offers.</p>
+    <!-- Email sign up form  ------- Use the action-xhr attribute to submit the form via XMLHttpRequest (XHR) --------------->
+        <form method="post"
+              class="p2"
+              action-xhr="/components/amp-form/submit-form-input-text-xhr" target="_top">
+            <div class="ampstart-input">
+                <input type="text"
+                       class=""
+                       name="name"
+                       placeholder="Name..."
+                       required>
+                <input type="email"
+                       class=""
+                       name="email"
+                       placeholder="Email..."
+                       required>
+            </div>
+            <input type="submit"
+                   value="Subscribe"
+                   class="ampstart-btn">
+            <div submit-success>
+                <template type="amp-mustache"> Success! Thanks {{name}} for trying the
+                    <code>amp-form</code> demo! Try to insert the word "error" as a name input in the form to see how
+                    <code>amp-form</code> handles errors.
+                </template>
+            </div>
+            <div submit-error>
+                <template type="amp-mustache">Error! Thanks {{name}} for trying the
+                    <code>amp-form</code> demo with an error response.
+                </template>
+            </div>
+        </form>
+
+        <!--Footer: connect Social -->
+        <div class="footer-connect">
+            <h5>Connect with Teleflora</h5>
+            <p>Get the latest news and offers.</p>
+            <div class="footer-social">
+                    <a href="https://www.facebook.com/teleflora" class="icon-social" target="_blank">
+                        <amp-img src="img/social-sprite-fb.jpg"
+                            width="55"
+                            height="55"
+                            layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a>
+                    <a href="https://twitter.com/teleflora" class="icon-social" target="_blank">
+                        <amp-img src="img/social-sprite-g.jpg"
+                            width="55"
+                            height="55"
+                           layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a>
+                    <a href="https://www.instagram.com/teleflora/" class="icon-social" target="_blank">
+                     <amp-img src="img/social-sprite-inst.jpg"
+                            width="55"
+                            height="55"
+                            layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a>
+                    <a href="http://www.pinterest.com/teleflora/" class="icon-social" target="_blank">
+                    <amp-img src="img/social-sprite-tw.jpg"
+                            width="55"
+                            height="55"
+                            layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a>
+                    <a href="https://www.youtube.com/teleflora/" class="icon-social" target="_blank">
+                    <amp-img src="img/social-sprite-pin.jpg"
+                            width="55"
+                            height="55"
+                            layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a>
+                    <a href="https://plus.google.com/+teleflora" class="icon-social" target="_blank">
+                    <amp-img src="img/social-sprite-yt.jpg"
+                            width="55"
+                            height="55"
+                            layout="fixed"
+                            alt="facebook">
+                        </amp-img> 
+                    </a> 
+            </div>
+        </div>
+
+        <!-- footer: Rewards   -->
+        <div class="footer-rewards">
+            <h5>Get Rewarded!</h5>
+            <p>Earn rewards like discounts and free bouquets</p>
+            <a id="img-rewards" href="http://www.teleflora.com/account/login.jsp?signUpForRewards=true">
+                <amp-img id="animation1" src="img/teleflora_rewards.png"
+                        width="236"
+                        height="32"
+                        layout="fixed"
+                        alt="facebook">
+                </amp-img>
+            </a>
+        </div>
+    </div>
+
+    <!--Footer: OurCompany rewards ----->     
+    <div class="footer-container">
+        <div class="footer-grid-2">
+              <h5>Our Company</h5>
+              <ul class="link-list">
+                <li><a href="info-about-teleflora.asp.html">About Us</a></li>
+                <li><a href="http://www.teleflora.com/careers">Careers</a></li>
+                <li><a href="http://www.teleflora.com/media">Media</a></li>
+                <li><a href="http://www.teleflora.com/info">Our Services</a></li>
+                <li><a href="http://www.teleflora.com/info-partner-programs">Partnership Programs</a></li>
+                <li><a href="http://www.teleflora.com/becomeatelefloraflorist">Become a Teleflora Florist</a></li>
+                <li> <a href="http://www.teleflora.com/info/the-teleflora-difference">What's the Teleflora Difference?</a> </li>
+              </ul>
+            </div>
+        <div class="footer-grid-2">
+            <h5>Flower Guides</h5>
+            <ul class="link-list">
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="floral-tips-inspiration.html">Floral Facts &amp; Inspiration</a></li>
+                <li><a href="giftGuide.html">Gift Giving Guides</a></li>
+                <li><a href="sympathy.html">Sympathy &amp; Funeral Guide</a></li>
+                <li><a href="http://www.teleflora.com/wedding-flowers/ideas-inspiration">Wedding Flower Guide</a></li>
+            </ul>
+        </div>
+        <div class="footer-grid-2">
+            <h5>Shop Teleflora</h5>
+            <ul class="link-list">
+                <li><a href="http://www.teleflora.com/same-day-flower-delivery/?catID=cat480085">Same-Day Flower Delivery</a></li>
+                <li><a href="birthday-flowers/index.html%3FcatID=cat210012.html">Birthday Flowers</a></li>
+                <li><a href="sympathy.html">Funeral &amp; Sympathy Flowers</a></li>
+                <li><a href="http://www.teleflora.com/InternationalFlowerDelivery?countryName=Default&amp;defaultCountry=Default">International Flower Delivery</a></li>
+            </ul>
+        </div>
+        <div class="footer-grid-2">
+            <h5>Help</h5>
+            <ul class="link-list">
+                <li><a href="customerservice.asp.html">Customer FAQs</a></li>
+                <li><a href="http://www.findaflorist.com/" target="_blank">Find a Florist</a></li>
+                <li><a href="http://www.teleflora.com/info/how-to-place-an-order">Order &amp; Delivery Info</a></li>
+                <li><a href="http://www.teleflora.com/aboutUs/order_inquiry.jsp">Contact Customer Service</a></li>
+                <li><a href="securityprivacy.html">Security &amp; Privacy</a></li>
+                <li><a href="http://www.teleflora.com/sitemap">Sitemap</a></li>
+            </ul>
+        </div>
+    </div>
+<!-- language changer
+      <div class="container_4 d-container_12 clearfix">
+        <div class="grid_2 d-grid_3 d-omega ftrLanguage">
+          <label class="m-footer-label">Change Language</label>
+          <select name="languageSelect" id="languageSelect" onchange="redirectToTranslatedURL()">
+            <option value="www.teleflora.com">English</option>
+            <option value="fr1.teleflora.com">French</option>
+          </select>
+        </div>
+      </div>
+-->
+</footer>
+    
+    
+<!-- AMP service worker ------------------------------------------------------------->
+<amp-install-serviceworker
+  src="https://www.your-domain.com/serviceworker.js"
+  data-iframe-src="https://www.your-domain.com/install-serviceworker.html"
+  layout="nodisplay">
+</amp-install-serviceworker>
+</body>
+</html>

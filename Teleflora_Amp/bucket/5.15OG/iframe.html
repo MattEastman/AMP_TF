@@ -1,0 +1,119 @@
+<!--Matt Eastman
+Questions are in comments. Overall questions and More notes below.
+1. Does AMP VR pictures work?
+2. Does 360 videos on youtube work
+3.
+
+qlah pity°
+---------------------------------------->
+
+<!-- Doctype declaration is required. -->
+<!doctype html>
+<!-- This tells everyone that this is an AMP file. `<html amp>` works too. -->
+<html ⚡>
+<head>
+<!-- The charset definition must be the first child of the `<head>` tag. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>teleflora AMp Demo</title>
+<!-- AMP HTML files require a canonical link pointing to the regular HTML. If no HTML version exists, it should point to itself.-->
+    <link rel="canonical" href="http://teleflora.com">
+<!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-google-vrview-image" src="https://cdn.ampproject.org/v0/amp-google-vrview-image-0.1.js"></script>
+  
+     <script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://ampbyexample.com/#samples_templates",
+        "name": "Samples &amp; Templates"
+      }
+    }, {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://ampbyexample.com/samples_templates/product_browse_page/",
+        "name": "Product Browse Page"
+      }
+    }]
+  }</script>
+  <!-- CSS must be embedded inline.-->
+  <style amp-custom>
+      a{color:#fa3c7a;text-decoration: none;}
+      li{list-style-type: none;}
+      h1,h2,h3,h4,h5,h6{text-align: center; font-family: Helvetica,sans-serif;}
+      h1{font-size: 24px; font-family: "Avenir-Medium",Helvetica,sans-serif;}
+      h2{font-size: 14px; font-family:Helvetica,sans-serif;font-weight: 400;}
+      #dod_greyback{background-color: rgba(240,240,240,1)}
+      #up15{position: relative;top: -15px}
+      .container-text,.container-RM{padding:2px 10px;}
+      .container-RM{}
+      .container-RM h3,.container-RM h4, .container-RM h5 {text-align: left;font-weight: 400;}
+      .container-RM h4{margin-bottom: -15px;}
+      .promo-container{height: 40px;background-color: #fa3c7a;margin-top: -15px}
+      .promo-container h3{font-size: 15px;color:#ffffff;font-weight: 600;}
+      
+      
+      #logo{display: inline-block; position: relative; top:-15px; right: -10px; margin: 0 auto;}
+      #logo2{position: relative;right: -60px; top:-38px;margin: 0 auto;}
+      #header-sidebar{border: 1px solid #e2e2e2;}
+      .ampstart-navbar-trigger{display: inline-block;}
+      .login-container{float: right; height: 22px;display: inline-block;margin-left: 25px; padding:20px 10px 20px 1px;position: relative;top: -2px}
+      .login-container .login, .login-container .cart{display: inline-block;margin:15px 0px 0px 10px;height: 55px;width: 55px; position: relative; top:-32px;position: relative;}
+      .login amp-img, .cart amp-img{display: inline-block; position: relative;right: -30%;bottom:-18%}
+      .cart amp-img{bottom:-21%}
+      .login-container h6{display: inline-block;position: relative;bottom:-53%;left: -22%; margin: auto;}
+      .cart h6{position: relative;left: -16%;}
+      .login-container a{color:black;}
+      .ampstart-nav {margin-top: -22px; background-color: #ffffff;}
+      .ampstart-nav ul {list-style-type: none;position: relative;max-width: 160px;margin:0px;}
+      .ampstart-nav li {position: relative; left: -40px;border-bottom: 1px solid #f1f1f1;min-width:210px;}
+      .ampstart-nav a {font-size: 12px;text-decoration: none;text-transform: uppercase;padding-left: 20px;font-weight: 500;}
+      .ampstart-nav h2{font-size: 12px;background-color:white;padding: 5px 0px;text-align: left;padding-left: 10px;border-bottom: 1px solid black;}
+      .ampstart-dropdown-item{padding:10px 5px;text-decoration: none;}
+      form.amp-form-submit-success [submit-success],
+      form.amp-form-submit-error [submit-error]{margin-top: 16px;}
+      form.amp-form-submit-success [submit-success] {color: green;}
+      form.amp-form-submit-error [submit-error] {color: red;}
+      form.amp-form-submit-success.hide-inputs > input {display: none;}
+      form .ampstart-input{}
+      form input{position: relative; width: 60%;height: 35px; display: block; margin: auto;margin-left: 15%;}
+      form #submit{position: relative;left: 60%; top:-35px; width: 55px;}
+      
+      #x-icon{padding:10px 0px 10px 10px;}
+      #hero-images{background-color:#e2e2e2;height: 300px;margin-top: -20px;}
+      #hero-images h3{padding-top: 5px;text-align: center;}
+      #hero-images amp-img{ display: block; margin: 0 auto;}
+      .footer{background-color: #fafafa;padding: 10px 0px;}
+      .footer h5,.footer p,.footer li a{text-align: left;color:grey}
+      .footer li a{font-size: 14px; text-align: left;margin-left: -25px;}
+      .footer h5{margin-bottom: 2px;margin-left: 10px; color:black;}
+      .footer p{font-size: 14px; margin: 0;padding-left: 20px;}
+      .footer a{padding: 0px 3px;}
+      .footer-social{margin-top: 10px;}
+      .footer .icon-social amp-img{border:1px solid #fa3c7a;}
+      #img-rewards{display: block; padding: 10px 19px 0px 18px;}
+      .footer-grid-2{display: inline-block; width: 48%;vertical-align: top;}
+
+  </style>    
+  <!--The AMP boilerplate.-->
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+</head>
+
+<body>
+<div id="olapic_specific_widget"></div><script type="text/javascript" src="https://photorankstatics-a.akamaihd.net/81b03e40475846d5883661ff57b34ece/static/frontend/latest/build.min.js"  data-olapic="olapic_specific_widget" data-instance="57a40cb588ac873122fba4f663565707" data-apikey="a410db595e9f9602af1fad50db39cc2414aebbd5e5b84740a716a75d956bc1ae" async="async"></script>
+</body>
+</html>

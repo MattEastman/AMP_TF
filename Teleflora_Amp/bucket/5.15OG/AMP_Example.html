@@ -1,0 +1,152 @@
+<!doctype html>
+<!-- ALSO HTML COMMENTS are NOT ALLOWED IN AMP - BASTARDS -->
+<!-- notice amp in html-->
+<html amp>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+
+
+<!-- Async in script tags to load asyncrasisususuly -->
+<!-- Amp Analytics tag -  is not Not required, but if used must be in Head must be before JavaScript library -->
+<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+
+<!--tells google corresponding html version --> 
+<link rel="canonical" href="http://teleflora.com" />
+<script async src="https://cdn.ampproject.org/v0.js"></script>
+
+
+<style amp-boilerplate>
+body {
+	-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+	-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+	-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+	animation: -amp-start 8s steps(1, end) 0s 1 normal both
+}
+@-webkit-keyframes -amp-start {
+from {
+visibility:hidden
+}
+to {
+	visibility: visible
+}
+}
+@-moz-keyframes -amp-start {
+from {
+visibility:hidden
+}
+to {
+	visibility: visible
+}
+}
+@-ms-keyframes -amp-start {
+from {
+visibility:hidden
+}
+to {
+	visibility: visible
+}
+}
+@-o-keyframes -amp-start {
+from {
+visibility:hidden
+}
+to {
+	visibility: visible
+}
+}
+@keyframes -amp-start {
+from {
+visibility:hidden
+}
+to {
+	visibility: visible
+}
+}
+</style>
+<noscript>
+<style amp-boilerplate>
+body {
+	-webkit-animation: none;
+	-moz-animation: none;
+	-ms-animation: none;
+	animation: none
+}
+</style>
+</noscript>
+
+<style amp-custom>
+<!--used to inline all css into the head section. No external stylesheets on AMP pages -->
+</style>
+<!--The use of script tag is not allowed on the page unless for application/ID+json
+---- schema – highly recommended. You will need schema to be perfectly valid AMP -->
+<script type="application/ID+jason">
+<!-- schemea example-->
+ {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": "http://cdn.ampproject.org/article-metadata.html",
+    "headline": "Lorem Ipsum",
+    "datePublished": "1907-05-05T12:02:41Z",
+    "dateModified": "1907-05-05T12:02:41Z",
+    "description": "The Catiline Orations continue to beguile engineers and designers alike -- but can it stand the test of time?",
+    "author": {
+      "@type": "Person",
+      "name": "Jordan M Adler"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Google",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://cdn.ampproject.org/logo.jpg",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://cdn.ampproject.org/leader.jpg",
+      "height": 2000,
+      "width": 800
+    }
+  }
+</script>
+<!-- Must add this script from AMP library for iframe hack -->
+<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+</head>
+<body>
+<amp-img src="images/img.jpg"></amp-img>
+
+<!-- AMP will play videos via iframes, also iframes are used as a hack to add javascript code that AMP doesnt support -->
+<amp-iframe src="youtube.com"></amp-iframe>
+
+
+<!-- amp form example found at https://www.ampproject.org/docs/reference/components/amp-form  -->
+  <form method="post"
+      action-xhr="https://ampbyexample.com/components/amp-form/submit-form-xhr" target="_top" class="p2">
+      <div class="ampstart-input inline-block relative mb3">
+        <select name="cars" id="cars" >
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
+        <label for="cars" class="absolute top-0 right-0 bottom-0 left-0">Select a car</label>
+      </div>
+      <input type="submit" value="OK" class="ampstart-btn caps">
+      <div submit-success>
+        <template type="amp-mustache">
+          Success! Thanks for trying the <code>amp-form</code> demo!
+        </template>
+      </div>
+      <div submit-error>
+        <template type="amp-mustache">
+          Error!
+        </template>
+      </div>
+  </form>
+
+</body>
+</html>
